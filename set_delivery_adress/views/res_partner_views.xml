@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- action for #T00458 -->
+    <record id="view_res_partner_form_inherited" model="ir.ui.view">
+        <field name="name">res_partner_form_inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="before">
+                <field name= "delivery_adress" attrs="{'invisible':[('type', '!=', 'delivery')]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_partner_address_form" model="ir.ui.view">
+            <field name="name">res.partner.form.address</field>
+            <field name="model">res.partner</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <form string="Partner">
+                    <field name="type" class="oe_inline"/>
+                </form>
+            </field>
+        </record>
+</odoo>
