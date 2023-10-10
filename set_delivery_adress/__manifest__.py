@@ -4,7 +4,7 @@
     "category": "Address management",
     "summary": "Address management",
     "author": "Bizzappdev",
-    "website": "http://www.Bizzappdev.com",
+    "website": "https://github.com/OCA/product-variant",
     ""
     "description": """
     Address management
