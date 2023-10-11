@@ -13,15 +13,7 @@ class ResPartner(models.Model):
     )
 
     type = fields.Selection(
-        [
-            ("contact", "Contact"),
-            ("invoice", "Invoice Address"),
-            ("delivery", "Delivery Address"),
-            ("other", "Other Address"),
-            ("private", "Private Address"),
-            ("Drop Shiping", "drop shiping"),
+        selection_add=[
+            ("drop shiping", "Drop Shiping"),
         ],
-        string="Address Type",
-        default="contact",
-        help="Invoice & Delivery addresses are used in sales orders. Private addresses are only visible by authorized users.",
     )

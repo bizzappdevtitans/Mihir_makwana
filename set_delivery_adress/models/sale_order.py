@@ -1,19 +1,21 @@
-from odoo import models
+from odoo import api, models
 
 
-# inherit sale.order object # T00378
+# inherit sale.order object # T00458
 class SaleOrder(models.Model):
     _inherit = ["sale.order"]
 
-    def partner_invoice_adress(self):
-        """This Method set delivery adress #T00458"""
+    @api.onchange("partner_id")
+    def onchange_partner_id(self):
+        if self.partner_id and self.partner_id.company_type == "company":
+            individual_with_delivery_adress = self.partner_id.child_ids.filtered(
+                lambda a: a.delivery_adress and a.company_type == "individual"
+            )
+            if individual_with_delivery_adress:
+                self.partner_shipping_id = individual_with_delivery_adress[0]
 
-    # adding a field for a set a delivery adress for #T00458
-    # partner_invoice_adress_id = fields.Many2one(
-    #     "res.partner",
-    #     string="Invoice Address",
-    #     readonly=True,
-    #     required=True,
-    #     compute="",
-    #     domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
-    # )
+            else:
+                self.partner_shipping_id = self.partner_id
+
+        else:
+            self.partner_shipping_id = self.partner_id
