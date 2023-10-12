@@ -12,8 +12,9 @@ class ResPartner(models.Model):
         string=" Is Delivery Address ? ", help=" is adress is a delivery adress ??"
     )
 
+    # add a new selection fields in res.partner object Drop shipping # T00458
     type = fields.Selection(
         selection_add=[
-            ("drop shiping", "Drop Shiping"),
+            ("drop_shiping", "Drop Shiping"),
         ],
     )
