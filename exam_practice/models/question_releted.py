@@ -8,4 +8,4 @@ class QuestionRelated(models.Model):
     question_type = fields.Selection(
         [("theory", "THEORY"), ("practical", "PRACTICAL")], string=" Type Of Question"
     )
-    no_of_question_in_paper = fields.Integer(string="Question")
+    no_of_question = fields.Integer(string="Question")

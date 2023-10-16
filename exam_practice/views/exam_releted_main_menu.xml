@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+        <!-- this menu for a student  -->
+        <menuitem id="exam_related_menu_views" name="Exam Realted" />
+
+        <menuitem
+        id="exam_releted_views"
+        name="Registration"
+        parent="exam_related_menu_views"
+        action="exam_releted_views"
+    />
+</odoo>
