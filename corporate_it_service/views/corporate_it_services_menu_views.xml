@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+        <menuitem id="it_services_root" name="IT SERVICES" />
+        <menuitem
+        id="job_applicant"
+        name="Job Applicant"
+        parent="it_services_root"
+        action="action_applicant"
+    />
+</odoo>

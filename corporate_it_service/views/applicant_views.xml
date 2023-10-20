@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- tree view  -->
+    <record id="applicant_tree_view_for_corporate_it_services" model="ir.ui.view">
+        <field name="name"> applicant_tree_view</field>
+        <field name="model">it.applicant</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="active_boolean" />
+                <field name="applicant_id" />
+                <field name="applicant_email" />
+                <field name="applicant_degree" />
+                <field name="applicant_date" />
+                <field name="salary_expect" />
+                <field name="platform_via" />
+                <field name="mobile" />
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- form view  -->
+    <record id="applicant_form_view_for_corporate_it_services" model="ir.ui.view">
+        <field name="name">applicant_tree_view</field>
+        <field name="model">it.applicant</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                        <field name="name" />
+                        <field name="active_boolean" />
+                        <field name="applicant_id" />
+                        <field name="applicant_email" />
+                        <field name="mobile" />
+                        <field name="applicant_date" />
+                        </group>
+                        <group>
+                        <field name="image" widget="image" class="oe_avatar" />
+                        <field name="applicant_degree" />
+                        <field name="salary_expect" />
+                        <field name="platform_via" />
+                        <field name="attachment_cv" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+    <record id="applicant_search_view_for_corporate_it_services" model="ir.ui.view">
+        <field name="name">applicant_tree_view</field>
+        <field name="model">it.applicant</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="active_boolean" />
+                <field name="applicant_id" />
+                <field name="applicant_email" />
+                <field name="applicant_degree" />
+                <field name="applicant_date" />
+                <field name="salary_expect" />
+                <field name="platform_via" />
+                <field name="mobile" />
+                <!-- This fields are searching fields for #T00454 -->
+                <filter
+                    name="active_boolean"
+                    string="ACTIVE"
+                    domain="[('active_boolean','=','True')]"
+                    help="Only active applicant is shown "
+                />
+            </search>
+        </field>
+    </record>
+
+
+
+
+    <!-- action -->
+    <record id="action_applicant" model="ir.actions.act_window">
+        <field name="name">applicant Form</field>
+        <field name="res_model">it.applicant</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
