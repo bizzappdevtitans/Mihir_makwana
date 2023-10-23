@@ -8,6 +8,7 @@
     "data": [
         "security/ir.model.access.csv",
         "views/applicant_views.xml",
+        "views/job_position_views.xml",
         "views/corporate_it_services_menu_views.xml",
     ],
     "installable": True,

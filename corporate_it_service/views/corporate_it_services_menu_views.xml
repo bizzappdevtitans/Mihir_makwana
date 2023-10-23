@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+
         <menuitem id="it_services_root" name="IT SERVICES" />
         <menuitem
         id="job_applicant"
@@ -7,4 +8,13 @@
         parent="it_services_root"
         action="action_applicant"
     />
+
+        <menuitem
+        id="job_position"
+        name="Job Position"
+        parent="it_services_root"
+        action="action_position"
+    />
+
+
 </odoo>

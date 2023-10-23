@@ -10,6 +10,7 @@
                 <field name="active_boolean" />
                 <field name="applicant_id" />
                 <field name="applicant_email" />
+                <field name="position_ids" />
                 <field name="applicant_degree" />
                 <field name="applicant_date" />
                 <field name="salary_expect" />
@@ -35,6 +36,8 @@
                         <field name="applicant_email" />
                         <field name="mobile" />
                         <field name="applicant_date" />
+                        <field name="position_ids" />
+                        <field name="company_id" />
                         </group>
                         <group>
                         <field name="image" widget="image" class="oe_avatar" />
@@ -62,6 +65,7 @@
                 <field name="applicant_id" />
                 <field name="applicant_email" />
                 <field name="applicant_degree" />
+                <field name="position_ids" />
                 <field name="applicant_date" />
                 <field name="salary_expect" />
                 <field name="platform_via" />

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- tree view  -->
+    <record id="position_tree_view_for_corporate_it_services" model="ir.ui.view">
+        <field name="name"> position_tree_view</field>
+        <field name="model">job.position</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="description" />
+                <field name="company_id" />
+                <field name="department_id" />
+                <field name="recruiter_id" />
+                <field name="recruitment" />
+                <field name="salary_proposed" />
+                <field name="date_of_open" />
+                <field name="date_of_closing" />
+                <field name="applicants_ids" />
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- form view  -->
+    <record id="position_form_view_for_corporate_it_services" model="ir.ui.view">
+        <field name="name">position_form_view</field>
+        <field name="model">job.position</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                        <div class="oe_litle">
+                                <label for="name" class="oe_edit_only" />
+                                <h1>
+                                        <field
+                                name="name"
+                                placeholder="e.g. Sales Manager"
+                            />
+                                </h1>
+                        </div>
+                        <group>
+                                <group>
+                                        <field name="description" />
+                                        <field name="company_id" />
+                                        <field name="department_id" />
+                                        </group>
+                                        <group>
+                                        <field name="recruiter_id" />
+                                        <field name="recruitment" />
+                                        <field name="date_of_open" />
+                                        <field name="date_of_closing" />
+                                        <field name="salary_proposed" />
+                                        </group>
+                                    </group>
+                                        <group>
+                                        <field name="applicants_ids" />
+                                        </group>
+                                </sheet>
+                        </form>
+                </field>
+        </record>
+
+    <record id="position_search_view_for_corporate_it_services" model="ir.ui.view">
+        <field name="name">position_search_view</field>
+        <field name="model">job.position</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="description" />
+                <field name="company_id" />
+                <field name="department_id" />
+                <field name="recruiter_id" />
+                <field name="recruitment" />
+                <field name="date_of_closing" />
+                <field name="applicants_ids" />
+                <field name="date_of_open" />
+            </search>
+        </field>
+    </record>
+
+
+
+
+    <!-- action -->
+    <record id="action_position" model="ir.actions.act_window">
+        <field name="name">position</field>
+        <field name="res_model">job.position</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
