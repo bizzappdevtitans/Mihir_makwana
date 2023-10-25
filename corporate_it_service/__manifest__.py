@@ -7,6 +7,9 @@
     "depends": ["base", "mail", "hr"],
     "data": [
         "security/ir.model.access.csv",
+        "data/applications_sequence_generate_views.xml",
+        "views/applicant_stage_views.xml",
+        "views/applicant_category_views.xml",
         "views/applicant_views.xml",
         "views/job_position_views.xml",
         "views/corporate_it_services_menu_views.xml",

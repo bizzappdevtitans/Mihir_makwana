@@ -7,16 +7,39 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name" />
-                <field name="active_boolean" />
+                <field name="boolean" />
+                <field name="state_kanban" widget="state_selection" readonly="1" />
                 <field name="applicant_id" />
                 <field name="applicant_email" />
                 <field name="position_ids" />
+                <field name="priority_selection" widget="priority" optional="show" />
                 <field name="applicant_degree" />
                 <field name="applicant_date" />
                 <field name="salary_expect" />
                 <field name="platform_via" />
                 <field name="mobile" />
+                <field name="availability" optional="hide" />
             </tree>
+        </field>
+    </record>
+
+    <record id="applicant_calendar_view_for_corporate_it_services" model="ir.ui.view">
+        <field name="name">Applicants Calendar</field>
+        <field name="model">it.applicant</field>
+        <field name="priority_selection" eval="2" />
+        <field name="arch" type="xml">
+            <calendar
+                string="Applicants"
+                date_start="applicant_date"
+                date_stop="availability"
+                event_open_popup="true"
+                mode="month"
+                color="name"
+                quick_add="False"
+            >
+                <field name="name" />
+                <field name="applicant_id" />
+            </calendar>
         </field>
     </record>
 
@@ -27,17 +50,47 @@
         <field name="model">it.applicant</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button
+                        id="button_potential"
+                        name="action_status_potential"
+                        string="Potential"
+                        class="btn-success"
+                        type="object"
+                    />
+                    <button
+                        id="button_refuse"
+                        name="action_status_blocked"
+                        string="Blocked"
+                        class="btn-danger"
+                        type="object"
+                    />
+                    <!-- Show all stages in statusbar -->
+                    <field
+                        name="stage_id"
+                        widget="statusbar"
+                        options="{'clickable': '1'}"
+                        attrs="{'invisible': [('boolean', '=', False)]}"
+                    />
+                </header>
                 <sheet>
                     <group>
                         <group>
+                        <field name="state_kanban" widget="state_selection" />
                         <field name="name" />
-                        <field name="active_boolean" />
+                        <field name="active_applicant" invisible="1" />
+                        <field name="boolean" />
                         <field name="applicant_id" />
                         <field name="applicant_email" />
                         <field name="mobile" />
                         <field name="applicant_date" />
                         <field name="position_ids" />
                         <field name="company_id" />
+                        <field
+                                name="priority_selection"
+                                widget="priority"
+                                optional="show"
+                            />
                         </group>
                         <group>
                         <field name="image" widget="image" class="oe_avatar" />
@@ -48,11 +101,26 @@
                         </group>
                     </group>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" />
+                    <field name="activity_ids" />
+                    <field name="message_ids" options="{'open_attachments': True}" />
+                </div>
             </form>
         </field>
     </record>
 
-
+    <record id="applicant_pivot_view_for_corporate_it_services" model="ir.ui.view">
+        <field name="name">Recruitment</field>
+        <field name="model">it.applicant</field>
+        <field name="arch" type="xml">
+            <pivot string="Job Applications" sample="1">
+                <field name="name" type="row" />
+                <field name="applicant_id" type="col" />
+                <field name="mobile" invisible="1" />
+            </pivot>
+        </field>
+    </record>
 
     <record id="applicant_search_view_for_corporate_it_services" model="ir.ui.view">
         <field name="name">applicant_tree_view</field>
@@ -61,7 +129,7 @@
         <field name="arch" type="xml">
             <search>
                 <field name="name" />
-                <field name="active_boolean" />
+                <field name="boolean" />
                 <field name="applicant_id" />
                 <field name="applicant_email" />
                 <field name="applicant_degree" />
@@ -72,10 +140,28 @@
                 <field name="mobile" />
                 <!-- This fields are searching fields for #T00454 -->
                 <filter
-                    name="active_boolean"
+                    name="boolean"
                     string="ACTIVE"
-                    domain="[('active_boolean','=','True')]"
+                    domain="[('boolean','=','True')]"
                     help="Only active applicant is shown "
+                />
+                <filter
+                    string="position"
+                    name="position_ids"
+                    context="{'group_by':'position_ids'}"
+                    help="Group by Position"
+                />
+                <filter
+                    string="state"
+                    name="state_kanban"
+                    context="{'group_by':'state'}"
+                    help="Group by state "
+                />
+                <filter
+                    string="Priority"
+                    name="priority_selection"
+                    context="{'group_by':'priority_selection'}"
+                    help="Group by Priority  "
                 />
             </search>
         </field>
@@ -88,6 +174,6 @@
     <record id="action_applicant" model="ir.actions.act_window">
         <field name="name">applicant Form</field>
         <field name="res_model">it.applicant</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,calendar,pivot</field>
     </record>
 </odoo>

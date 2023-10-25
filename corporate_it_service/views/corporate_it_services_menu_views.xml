@@ -15,6 +15,24 @@
         parent="it_services_root"
         action="action_position"
     />
+        <menuitem
+        id="applicant_category"
+        name="Applicant Category"
+        parent="it_services_root"
+        action="action_applicant_category"
+    />
+        <menuitem
+        id="menu_job_recruitment_configuration"
+        name="Configuration"
+        parent="it_services_root"
+    />
+
+        <menuitem
+        id="applicant_stages"
+        name="Applicant Stages"
+        parent="menu_job_recruitment_configuration"
+        action="action_applicant_stages"
+    />
 
 
 </odoo>
