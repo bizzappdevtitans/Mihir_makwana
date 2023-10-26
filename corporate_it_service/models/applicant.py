@@ -1,4 +1,5 @@
 import re
+from datetime import date
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
@@ -94,6 +95,19 @@ class JobApplicant(models.Model):
         available_priority, string="Priority", default="0"
     )
 
+    def action_share_in_whatsapp(self):
+        if not self.mobile:
+            raise ValidationError(_("Missing your phone number !!!!!!"))
+        message = "HI %s ,YOUR APPLICATION ID IS : %s, THANK YOU " % (
+            self.applicant_id,
+            self.name,
+        )
+        whatsapp_api_url = "https://api.whatsapp.com/send?phone=%s&text=%s" % (
+            self.mobile,
+            message,
+        )
+        return {"type": "ir.actions.act_url", "target": "new", "url": whatsapp_api_url}
+
     @api.model
     def create(self, vals):
         if vals.get("name", _("New")) == _("New"):
@@ -103,6 +117,13 @@ class JobApplicant(models.Model):
 
         res = super(JobApplicant, self).create(vals)
         return res
+
+    def action_send_email(self):
+        records = self.env["it.applicant"].search([])
+        for record in records:
+            if record.applicant_date == date.today():
+                mail_template = self.env.ref("corporate_it_service.apllicant_send_mail")
+                mail_template.send_mail(self.id, force_send=True)
 
     @api.depends("position_ids")
     def _compute_stage(self):
@@ -136,13 +157,13 @@ class JobApplicant(models.Model):
             if record.salary_expect <= 0:
                 raise ValidationError(_("Expected salary must be greater than 0"))
 
-    @api.onchange("mobile")
-    def validate_applicant_phone(self):
-        """this method is validate applicant mobile number"""
-        if self.mobile:
-            match = self.mobile.match("^[0-9]{10}$", self.mobile)
-            if match is None:
-                raise ValidationError(_("Invalid Mobile Number"))
+    # @api.onchange("mobile")
+    # def validate_applicant_phone(self):
+    #     """this method is validate applicant mobile number"""
+    #     if self.mobile:
+    #         match = self.mobile.match("^[0-9]{10}$", self.mobile)
+    #         if match is None:
+    #             raise ValidationError(_("Invalid Mobile Number"))
 
     # @api.depends("department_id")
     # def _compute_department(self):

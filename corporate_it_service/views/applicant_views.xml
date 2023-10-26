@@ -58,6 +58,22 @@
                         class="btn-danger"
                         type="object"
                     />
+                    <button
+                        id="action_share_in_whatsapp"
+                        name="action_share_in_whatsapp"
+                        string="Share In Whatsapp"
+                        class="oe_highlight"
+                        type="object"
+                        icon="fa-whatsapp"
+                    />
+                    <button
+                        id="action_sent_email"
+                        name="action_send_email"
+                        string="Send Email"
+                        class="oe_highlight"
+                        type="object"
+                        icon="fa-duotone fa-envelope"
+                    />
                     <!-- Show all stages in statusbar -->
                     <field
                         name="stage_id"
