@@ -23,26 +23,19 @@
         </field>
     </record>
 
-    <record id="applicant_calendar_view_for_corporate_it_services" model="ir.ui.view">
+<!--     <record id="applicant_calendar_view_for_corporate_it_services" model="ir.ui.view">
         <field name="name">Applicants Calendar</field>
         <field name="model">it.applicant</field>
-        <field name="priority_selection" eval="2" />
+        <field name="priority_selection" eval="2"/>
         <field name="arch" type="xml">
-            <calendar
-                string="Applicants"
-                date_start="applicant_date"
-                date_stop="availability"
-                event_open_popup="true"
-                mode="month"
-                color="name"
-                quick_add="False"
-            >
-                <field name="name" />
-                <field name="applicant_id" />
+            <calendar string="Applicants" date_start="applicant_date" date_stop="availability"
+                      event_open_popup="true" mode="month" color="name" quick_add="False">
+                <field name="name"/>
+                <field name="applicant_id"/>
             </calendar>
         </field>
     </record>
-
+ -->
 
     <!-- form view  -->
     <record id="applicant_form_view_for_corporate_it_services" model="ir.ui.view">
@@ -154,7 +147,7 @@
                 <filter
                     string="state"
                     name="state_kanban"
-                    context="{'group_by':'state'}"
+                    context="{'group_by':'state_kanban'}"
                     help="Group by state "
                 />
                 <filter
@@ -174,6 +167,6 @@
     <record id="action_applicant" model="ir.actions.act_window">
         <field name="name">applicant Form</field>
         <field name="res_model">it.applicant</field>
-        <field name="view_mode">tree,form,calendar,pivot</field>
+        <field name="view_mode">tree,form,pivot</field>
     </record>
 </odoo>

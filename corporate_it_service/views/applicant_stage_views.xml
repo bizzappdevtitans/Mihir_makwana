@@ -60,20 +60,20 @@
                                 You can define here the labels that will be displayed for the kanban state instead
                                 of the default labels.
                             </p>
-                            <label for="legend_normal" string=" " class="o_status" />
-                            <field name="legend_normal" nolabel="1" />
+                            <label for="normal" string=" " class="o_status" />
+                            <field name="normal" nolabel="1" />
                             <label
-                            for="legend_blocked"
+                            for="blocked"
                             string=" "
                             class="o_status o_status_red"
                         />
-                            <field name="legend_blocked" nolabel="1" />
+                            <field name="blocked" nolabel="1" />
                             <label
-                            for="legend_done"
+                            for="done"
                             string=" "
                             class="o_status o_status_green"
                         />
-                            <field name="legend_done" nolabel="1" />
+                            <field name="done" nolabel="1" />
                         </group>
                         <separator string="Requirements" />
                         <field name="requirement" />
