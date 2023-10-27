@@ -4,3 +4,5 @@ access_job_position,access_job_position,model_job_position,base.group_user,1,1,1
 access_applicant_category,access_applicant_category,model_applicant_category,base.group_user,1,1,1,1
 access_applicant_stages,access_applicant_stages,model_applicant_stages,base.group_user,1,1,1,1
 access_cron_job_sent_email,access_cron_job_sent_email,model_cron_job_sent_email,base.group_user,1,1,1,1
+access_applicant_wizard,access_applicant_wizard,model_applicant_wizard,base.group_user,1,1,1,1
+access_position_wizard,access_position_wizard,model_position_wizard,base.group_user,1,1,1,1

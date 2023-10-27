@@ -37,7 +37,7 @@
     </record>
 
 
-
+    <!-- form view  -->
     <record
         id="applicant_stages_form_view_for_corporate_it_services"
         model="ir.ui.view"
@@ -83,7 +83,7 @@
         </record>
 
 
-
+    <!-- search view  -->
     <record
         id="applicant_stages_search_view_for_corporate_it_services"
         model="ir.ui.view"
@@ -99,7 +99,7 @@
         </field>
     </record>
 
-
+    <!-- action  -->
     <record id="action_applicant_stages" model="ir.actions.act_window">
         <field name="name">applicant stages</field>
         <field name="res_model">applicant.stages</field>

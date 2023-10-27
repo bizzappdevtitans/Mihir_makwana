@@ -1,10 +1,14 @@
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
+
+
 from odoo import _, fields, models
 
 
+# create a class for a applicant stages #T00472
 class ApplicantStages(models.Model):
     _name = "applicant.stages"
     _description = "Stages Of Applicant"
-
+    # fields for a applicant stages #T00472
     name = fields.Char(string="Stage Name")
     sequence = fields.Integer(string="Secuence", default="10")
     requirement = fields.Text(string="Recruitment")

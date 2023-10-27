@@ -33,12 +33,7 @@
         parent="menu_job_recruitment_configuration"
         action="action_applicant_stages"
     />
-<!--         <menuitem
-        id="various_department"
-        name="Department"
-        parent="it_services_root"
-        action="action_department"
-    /> -->
+
         <menuitem
         id="menu_all_department"
         name="Departments"

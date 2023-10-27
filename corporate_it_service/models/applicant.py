@@ -1,3 +1,5 @@
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
+
 import re
 from datetime import date
 
@@ -12,11 +14,13 @@ available_priority = [
 ]
 
 
+# create a class for a applicant
 class JobApplicant(models.Model):
     _name = "it.applicant"
     _description = "Job Applicant"
     _inherit = ["mail.thread", "mail.activity.mixin"]
 
+    # fields for applicant
     name = fields.Char(
         string="Applicant Id",
         required=True,
@@ -89,13 +93,27 @@ class JobApplicant(models.Model):
         string="State",
         copy=False,
         default="normal",
-        required=True,
     )
     priority_selection = fields.Selection(
         available_priority, string="Priority", default="0"
     )
 
+    def action_cancle(self):
+        """This method is use in wizard for a cancle a application for #T00472"""
+        action = self.env.ref(
+            "corporate_it_service.action_applicant_wizard_form_view"
+        ).read()[0]
+        return action
+
+    def action_create_position(self):
+        """This method is use in wizard for a create a record #T00472"""
+        action = self.env.ref(
+            "corporate_it_service.action_position_wizard_form_view"
+        ).read()[0]
+        return action
+
     def action_share_in_whatsapp(self):
+        """This method is use to share into whatsapp massages  #T00472"""
         if not self.mobile:
             raise ValidationError(_("Missing your phone number !!!!!!"))
         message = "HI %s ,YOUR APPLICATION ID IS : %s, THANK YOU " % (
@@ -110,6 +128,7 @@ class JobApplicant(models.Model):
 
     @api.model
     def create(self, vals):
+        """This method is use to defult applicant id is NEW  #T00472"""
         if vals.get("name", _("New")) == _("New"):
             vals["name"] = self.env["ir.sequence"].next_by_code("it.applicant") or _(
                 "New"
@@ -119,11 +138,14 @@ class JobApplicant(models.Model):
         return res
 
     def action_send_email(self):
+        """This method is use to a send a email  #T00472"""
         records = self.env["it.applicant"].search([])
         for record in records:
             if record.applicant_date == date.today():
-                mail_template = self.env.ref("corporate_it_service.apllicant_send_mail")
-                mail_template.send_mail(self.id, force_send=True)
+                mail_template = self.env.ref(
+                    "corporate_it_service.apllicant_email_template"
+                )
+                mail_template.send_mail(record.id, force_send=True)
 
     @api.depends("position_ids")
     def _compute_stage(self):
@@ -136,13 +158,16 @@ class JobApplicant(models.Model):
                 applicant.stage_id = False
 
     def action_status_potential(self):
+        """This method is use to change the state #T00472"""
         self.state_kanban = "done"
 
     def action_status_blocked(self):
+        """This method is use to change the state #T00472"""
         self.state_kanban = "blocked"
 
     @api.constrains("applicant_email")
     def _check_email_of_the_applicant(self):
+        """This method is use to validate a email  #T00472"""
         for record in self:
             valid_applicable_email = re.match(
                 "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+[A-Z|a-z]{2,7}",
@@ -153,19 +178,7 @@ class JobApplicant(models.Model):
 
     @api.constrains("salary_expect")
     def _check_salary_expected_of_the_applicant(self):
+        """This method is use to constrains to validate a salary #T00472"""
         for record in self:
             if record.salary_expect <= 0:
                 raise ValidationError(_("Expected salary must be greater than 0"))
-
-    # @api.onchange("mobile")
-    # def validate_applicant_phone(self):
-    #     """this method is validate applicant mobile number"""
-    #     if self.mobile:
-    #         match = self.mobile.match("^[0-9]{10}$", self.mobile)
-    #         if match is None:
-    #             raise ValidationError(_("Invalid Mobile Number"))
-
-    # @api.depends("department_id")
-    # def _compute_department(self):
-    #     for applicant in self:
-    #         applicant.department_id=

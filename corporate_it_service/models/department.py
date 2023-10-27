@@ -1,10 +1,14 @@
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
+
+
 from odoo import fields, models
 
 
+# create a class for a HR Department #T00472
 class HrDepartment(models.Model):
     _name = "hr.department"
     _inherit = "hr.department"
-
+    # fields for a hr.department #T00472
     department_head_id = fields.Many2one(
         comodel_name="res.users", string="Department Head"
     )

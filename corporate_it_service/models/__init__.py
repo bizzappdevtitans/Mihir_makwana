@@ -1,3 +1,5 @@
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
+
 from . import applicant
 from . import job_position
 from . import applicant_category
