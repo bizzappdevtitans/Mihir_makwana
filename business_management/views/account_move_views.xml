@@ -8,8 +8,8 @@
         <field name="inherit_id" ref="account.view_move_form" />
         <field name="arch" type="xml">
             <xpath expr="//group[@id='header_left_group']" position="inside">
-                <field name="_customer_number" />
-                <field name="_delivery_description" />
+                <field name="customer_number" />
+                <field name="delivery_description" />
                 <field name="_invoice_description" />
             </xpath>
         </field>
