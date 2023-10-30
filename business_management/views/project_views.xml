@@ -8,7 +8,7 @@
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='tag_ids']" position="after">
-                <field name="_project_description" />
+                <field name="project_description" />
             </xpath>
         </field>
     </record>

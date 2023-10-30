@@ -7,4 +7,4 @@ class AccountMove(models.Model):
     # fields for #T000380
     customer_number = fields.Char()
     delivery_description = fields.Text()
-    _invoice_description = fields.Text(string="Invoice Description")
+    invoice_description = fields.Text()

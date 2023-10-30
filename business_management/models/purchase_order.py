@@ -5,4 +5,4 @@ from odoo import fields, models
 class PurchaseOrder(models.Model):
     _inherit = ["purchase.order"]
     # fields for #T00393
-    _purchase_description = fields.Text(string="Purchase Description")
+    purchase_description = fields.Text()
