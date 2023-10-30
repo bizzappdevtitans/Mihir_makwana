@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!-- form view for #T00378-->
+    <data>
+        <record id="sale_order_view_form" model="ir.ui.view">
+            <field name="name">sale.order.view.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="_invoice_description" />
+                    <field name="_customer_number" />
+                    <field name="_manufacturing_order_description" />
+                </xpath>
+                <xpath expr="//field[@name='payment_term_id']" position="before">
+                    <field name="_delivery_description" />
+                    <field name="_purchase_description" />
+                    <field name="_project_description" />
+                    <field name="_task_description" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
