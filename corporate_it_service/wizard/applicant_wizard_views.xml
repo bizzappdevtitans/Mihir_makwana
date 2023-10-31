@@ -38,7 +38,7 @@
             <form string="Wizard Form View">
                 <group>
                     <field name="name" />
-                    <field name="description" />
+                    <field name="description_of_position" />
                 </group>
                 <footer>
                     <button name="action_confirm" string="Submit" type="object" />

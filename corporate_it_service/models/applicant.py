@@ -153,6 +153,7 @@ class JobApplicant(models.Model):
             if applicant.position_ids:
                 if not applicant.stage_id:
                     stage_ids = self.env["applicant.stages"].search([], limit=1).ids
+
                     applicant.stage_id = stage_ids[0] if stage_ids else False
             else:
                 applicant.stage_id = False

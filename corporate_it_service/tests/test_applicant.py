@@ -1,4 +1,4 @@
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
+# # Part of Odoo. See LICENSE file for full copyright and licensing details.
 # from odoo.exceptions import ValidationError
 # from odoo.tests.common import TransactionCase
 
@@ -29,5 +29,22 @@
 #                     "applicant_email": "makwanamihir922@gmail.com",
 #                     "applicant_degree": "bba",
 #                     "salary_expect": "50000",
+#                 }
+#             )
+
+#     # def test_02_check_atteched_cv(self):
+#     #     """This method is varify the applicannt has atteched cv ?"""
+#     #     applicant = self.env["it.applicant"].create({"attachment_cv": ""})
+
+#     def test_03_check_salary_validation(self):
+#         with self.assertRaises(ValidationError):
+#             applicant = self.env["it.applicant"].create(
+#                 {
+#                     "applicant_id": "Mihir Panchal",
+#                     "applicant_email": "makwanamihir922@gmail.com",
+#                     "boolean": "True",
+#                     "salary_expect": "-2323",
+#                     "applicant_degree": "bba",
+#                     "availability": date.today(),
 #                 }
 #             )

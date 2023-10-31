@@ -36,6 +36,6 @@ class PositionCreateWizard(models.TransientModel):
         self.env["job.position"].create(
             {
                 "name": self.name,
-                "description_of_position": self.description,
+                "description": self.description_of_position,
             }
         )
