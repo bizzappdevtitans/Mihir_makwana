@@ -15,7 +15,6 @@
                 <field name="salary_proposed" />
                 <field name="date_of_open" />
                 <field name="date_of_closing" />
-                <field name="applicants_ids" />
             </tree>
         </field>
     </record>

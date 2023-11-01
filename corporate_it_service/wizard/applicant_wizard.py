@@ -13,7 +13,7 @@ class ApplicantWizard(models.TransientModel):
         copy=False,
         readonly=True,
     )
-    boolean = fields.Boolean(string="Active", default=True, required=True)
+    is_active = fields.Boolean(string="Active", default=True, required=True)
     applicant_id = fields.Char(
         string="Applicant Name",
     )

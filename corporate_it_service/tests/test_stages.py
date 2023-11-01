@@ -6,13 +6,14 @@ from odoo.tests.common import TransactionCase
 class TestApplicantStages(TransactionCase):
     def setup(self):
         return super(TestApplicantStages, self).setup()
+        # self.ApplicantStages = self.env["applicant.stages"]
 
     def test_01_check_create_applicant_stages(self):
         stage = self.env["applicant.stages"].create(
             {
                 "name": "Recived",
-                # "sequence": self.sequence,
-                "requirement": " Review application",
+                "sequence": 10,
+                "requirement": "Review application",
                 "template_id": False,
                 "blocked": "In Progress",
                 "done": "Blocked",
@@ -20,14 +21,12 @@ class TestApplicantStages(TransactionCase):
             }
         )
         self.assertEqual(stage.name, "Recived", "stage name should be a  --Recived--")
-        # self.assertEqual(
-        #     stage.sequence, self.sequence, "stage sequence should be a  --10--"
-        # )
-        # self.assertEqual(
-        #     stage.requirement,
-        #     "Review application",
-        #     "stage requirement should be a  --Review application--",
-        # )
+        self.assertEqual(stage.sequence, 10, "stage sequence should be a  --10--")
+        self.assertEqual(
+            stage.requirement,
+            "Review application",
+            "stage requirement should be a  --Review application--",
+        )
         self.assertEqual(
             stage.blocked, "In Progress", "stage blocked should be a  --In Progress--"
         )

@@ -28,7 +28,7 @@ class JobApplicant(models.Model):
         readonly=True,
         default=lambda self: _("New"),
     )
-    boolean = fields.Boolean(string="Active", default=True, required=True)
+    is_active = fields.Boolean(string="Active", default=True, required=True)
     applicant_id = fields.Char(string="Applicant Name", required=True)
     mobile = fields.Char(string="Applicant Mobile", store=True)
     applicant_email = fields.Char(
@@ -64,8 +64,10 @@ class JobApplicant(models.Model):
             ("website", "OUR WEBSIDE"),
             ("google", "GOOGLE"),
         ],
-        string="Which Plateform to find job",
+        string="Job Platform",
+        help="Which Plateform to find job",
     )
+
     attachment_cv = fields.Binary(string="Attach your CV")
     image = fields.Binary(string="Applicant Image", attachment=True)
     company_id = fields.Many2one(
@@ -74,7 +76,7 @@ class JobApplicant(models.Model):
         store=True,
     )
     position_ids = fields.Many2one(
-        comodel_name="job.position", string="Alrrady Apply Jobs"
+        comodel_name="job.position", string="Already Apply Jobs"
     )
     stage_id = fields.Many2one(
         comodel_name="applicant.stages",
@@ -126,6 +128,13 @@ class JobApplicant(models.Model):
         )
         return {"type": "ir.actions.act_url", "target": "new", "url": whatsapp_api_url}
 
+    # @api.onchange("mobile")
+    # def validate_phone(self):
+    #     if self.mobile:
+    #         match = re.match("^[0-9]{10}$", self.mobile)
+    #         if match == None:
+    #             raise ValidationError(_("Invalid Mobile Number"))
+
     @api.model
     def create(self, vals):
         """This method is use to defult applicant id is NEW  #T00472"""
@@ -153,7 +162,6 @@ class JobApplicant(models.Model):
             if applicant.position_ids:
                 if not applicant.stage_id:
                     stage_ids = self.env["applicant.stages"].search([], limit=1).ids
-
                     applicant.stage_id = stage_ids[0] if stage_ids else False
             else:
                 applicant.stage_id = False

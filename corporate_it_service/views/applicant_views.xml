@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name" />
-                <field name="boolean" />
+                <field name="is_active" />
                 <field name="state_kanban" widget="state_selection" readonly="1" />
                 <field name="applicant_id" />
                 <field name="applicant_email" />
@@ -17,7 +17,7 @@
                 <field name="applicant_date" />
                 <field name="salary_expect" />
                 <field name="platform_via" />
-                <field name="mobile" />
+                <field name="mobile" widget="phone" />
                 <field name="availability" optional="hide" />
             </tree>
         </field>
@@ -47,7 +47,7 @@
                         type="object"
                     />
                     <button
-                        id="action_share_in_whatsapp"
+                        id="share_in_whatsapp"
                         name="action_share_in_whatsapp"
                         string="Share In Whatsapp"
                         class="oe_highlight"
@@ -81,7 +81,7 @@
                         name="stage_id"
                         widget="statusbar"
                         options="{'clickable': '1'}"
-                        attrs="{'invisible': [('boolean', '=', False)]}"
+                        attrs="{'invisible': [('is_active', '=', False)]}"
                     />
                 </header>
                 <sheet>
@@ -90,10 +90,10 @@
                         <field name="state_kanban" widget="state_selection" />
                         <field name="name" />
                         <field name="active_applicant" invisible="1" />
-                        <field name="boolean" />
+                        <field name="is_active" />
                         <field name="applicant_id" />
                         <field name="applicant_email" />
-                        <field name="mobile" />
+                        <field name="mobile" widget="phone" />
                         <field name="applicant_date" />
                         <field name="position_ids" />
                         <field name="company_id" />
@@ -131,7 +131,7 @@
                     options='{"group_by_tooltip": {"requirements": "Requirements"}}'
                 />
                 <field name="name" />
-                <field name="boolean" />
+                <field name="is_active" />
                 <field name="state_kanban" widget="state_selection" readonly="1" />
                 <field name="applicant_id" />
                 <field name="applicant_email" />
@@ -245,7 +245,7 @@
         <field name="arch" type="xml">
             <search>
                 <field name="name" />
-                <field name="boolean" />
+                <field name="is_active" />
                 <field name="applicant_id" />
                 <field name="applicant_email" />
                 <field name="applicant_degree" />
@@ -256,9 +256,9 @@
                 <field name="mobile" />
                 <!-- This fields are searching fields for #T00454 -->
                 <filter
-                    name="boolean"
+                    name="is_active"
                     string="ACTIVE"
-                    domain="[('boolean','=','True')]"
+                    domain="[('is_active','=','True')]"
                     help="Only active applicant is shown "
                 />
                 <filter

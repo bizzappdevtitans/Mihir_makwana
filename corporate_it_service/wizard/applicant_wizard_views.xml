@@ -9,7 +9,7 @@
                 <group>
                     <field name="applicant_id" />
                     <field name="applicant_email" />
-                    <field name="boolean" />
+                    <field name="is_active" />
                 </group>
                 <footer>
                     <button name="action_done" string="Submit" type="object" />
