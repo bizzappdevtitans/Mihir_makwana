@@ -36,3 +36,15 @@ class TestApplicantStages(TransactionCase):
             "Ready for Next Stage",
             "stage normal should be a  --Ready for Next Stage--",
         )
+
+    def test_02_check_sequence_for_stages(self):
+        stage1 = self.env["applicant.stages"].create(
+            {"name": "Application Recived", "sequence": 10}
+        )
+        stage2 = self.env["applicant.stages"].create(
+            {"name": "Interview Scheduled", "sequence": 20}
+        )
+        self.assertTrue(
+            stage1.sequence < stage2.sequence,
+            "stage1 should have lower sequence number  than stage2",
+        )

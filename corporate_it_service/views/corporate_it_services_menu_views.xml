@@ -34,12 +34,6 @@
         action="action_applicant_stages"
     />
 
-        <menuitem
-        id="menu_all_department"
-        name="Departments"
-        parent="it_services_root"
-        action="job_department_action"
-    />
 
 
 </odoo>

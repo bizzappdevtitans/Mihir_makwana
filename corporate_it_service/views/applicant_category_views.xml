@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+    <!-- tree view  -->
     <record
         id="applicant_category_tree_view_for_corporate_it_services"
         model="ir.ui.view"

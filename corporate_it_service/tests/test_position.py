@@ -7,7 +7,7 @@ from odoo.tests.common import TransactionCase
 class TestApplicantPosition(TransactionCase):
     def setup(self):
         return super(TestApplicantPosition, self).setup()
-        # self.TestApplicantPosition = self.env["job.position"]
+        #  self.TestApplicantPosition = self.env["job.position"]
 
     def test_01_create_job_position(self):
         position = self.env["job.position"].create(
@@ -29,21 +29,22 @@ class TestApplicantPosition(TransactionCase):
             "position name should be 'Sales Manager'",
         )
 
-    # def test_02_check_invalid_salary_proposed(self):
-    #     with self.assertRaises(ValidationError):
-    #         salary = self.env["job.position"].create(
-    #             {
-    #                 "name": "Sales Manager",
-    #                 "description": "This position for a Sales Manager",
-    #                 "company_id": False,
-    #                 "department_id": False,
-    #                 "recruiter_id": False,
-    #                 "recruitment": 12,
-    #                 "date_of_open": "2023-12-01",
-    #                 "date_of_closing": "2023-12-01",
-    #                 "salary_proposed": -12000000,
-    #             }
-    #         )
+    def test_02_check_invalid_salary_proposed(self):
+        with self.assertRaises(ValidationError):
+            salary = self.env["job.position"].create(
+                {
+                    "name": "Sales Manager",
+                    "description": "This position for a Sales Manager",
+                    "company_id": False,
+                    "department_id": False,
+                    "recruiter_id": False,
+                    "recruitment": 12,
+                    "date_of_open": "2023-12-01",
+                    "date_of_closing": "2023-12-01",
+                    "salary_proposed": -12000000,
+                }
+            )
+            salary.update({"salary_proposed": -12000000})
 
     def test_03_check_invalid_recruitment_proposed(self):
         with self.assertRaises(ValidationError):
@@ -64,23 +65,27 @@ class TestApplicantPosition(TransactionCase):
                 salary.recruitment, "0", "salary recruitment should not --0--"
             )
 
-    # def test_04_check_dates_validation(self):
-    #     with self.assertRaises(ValidationError):
-    #         dates = self.env["job.position"].create(
-    #             {
-    #                 "name": "Sales Manager",
-    #                 "description": "This position for a Sales Manager",
-    #                 "company_id": False,
-    #                 "department_id": False,
-    #                 "recruiter_id": False,
-    #                 "recruitment": 21,
-    #                 "date_of_open": "2023-12-01",
-    #                 "date_of_closing": "2023-11-01",
-    #                 "salary_proposed": 12000000,
-    #             }
-    #         )
+    def test_04_check_dates_validation(self):
+        with self.assertRaises(ValidationError):
+            dates = self.env["job.position"].create(
+                {
+                    "name": "Sales Manager",
+                    "description": "This position for a Sales Manager",
+                    "company_id": False,
+                    "department_id": False,
+                    "recruiter_id": False,
+                    "recruitment": 21,
+                    "date_of_open": "2023-12-01",
+                    "date_of_closing": "2023-11-01",
+                    "salary_proposed": 12000000,
+                }
+            )
+            dates.update(
+                {"date_of_open": "2023-12-01", "date_of_closing": "2023-11-01"}
+            )
 
     def test_05_check_default_values(self):
+        """This method is check a default values #T00472"""
         position = self.env["job.position"].create(
             {
                 "name": "Sales Manager",

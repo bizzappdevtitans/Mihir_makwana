@@ -10,7 +10,7 @@ class ApplicantStages(models.Model):
     _description = "Stages Of Applicant"
     # fields for a applicant stages #T00472
     name = fields.Char(string="Stage Name")
-    sequence = fields.Integer(string="Secuence", default="10")
+    sequence = fields.Integer(string="Secuence", default=10)
     requirement = fields.Text(string="Recruitment")
     template_id = fields.Many2one(comodel_name="mail.template", string="Email Template")
     blocked = fields.Char(

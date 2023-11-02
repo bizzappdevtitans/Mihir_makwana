@@ -92,9 +92,9 @@
                         <field name="active_applicant" invisible="1" />
                         <field name="is_active" />
                         <field name="applicant_id" />
-                        <field name="applicant_email" />
+                        <field name="applicant_email" widget="email" />
                         <field name="mobile" widget="phone" />
-                        <field name="applicant_date" />
+                        <field name="applicant_date" widget="date" />
                         <field name="position_ids" />
                         <field name="company_id" />
                         <field
@@ -106,9 +106,10 @@
                         <group>
                         <field name="image" widget="image" class="oe_avatar" />
                         <field name="applicant_degree" />
-                        <field name="salary_expect" />
+                        <field name="salary_expect" widget="integer" />
                         <field name="platform_via" />
                         <field name="attachment_cv" />
+                        <field name="availability" />
                         </group>
                     </group>
                 </sheet>

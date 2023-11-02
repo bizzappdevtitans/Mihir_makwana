@@ -8,6 +8,7 @@ class ApplicantWizard(models.TransientModel):
     _name = "applicant.wizard"
     _description = "cancle application"
 
+    # fields for a wizard #T00472
     name = fields.Char(
         string="Applicant Id",
         copy=False,
@@ -21,8 +22,15 @@ class ApplicantWizard(models.TransientModel):
         string="Email", help="Applicant Email", required=True, store="True"
     )
 
-    def action_done(self):
-        pass
+    def action_cancle_record(self):
+        """This method is delete a record #T00472"""
+        for record in self:
+            applicant = self.env["it.applicant"]
+
+            delete_record = applicant.search(
+                [("applicant_email", "=", record.applicant_email)]
+            )
+            delete_record.unlink()
 
 
 class PositionCreateWizard(models.TransientModel):
@@ -33,6 +41,7 @@ class PositionCreateWizard(models.TransientModel):
     description_of_position = fields.Text("Description")
 
     def action_confirm(self):
+        """This method is a create a new record #T00472"""
         self.env["job.position"].create(
             {
                 "name": self.name,

@@ -128,12 +128,25 @@ class JobApplicant(models.Model):
         )
         return {"type": "ir.actions.act_url", "target": "new", "url": whatsapp_api_url}
 
-    # @api.onchange("mobile")
-    # def validate_phone(self):
-    #     if self.mobile:
-    #         match = re.match("^[0-9]{10}$", self.mobile)
-    #         if match == None:
-    #             raise ValidationError(_("Invalid Mobile Number"))
+    @api.constrains("mobile")
+    def _validate_phone_number(self):
+        """This method is validate a phone number #T00472"""
+        if self.mobile:
+            test_count = 0
+            for element in self.mobile:
+                test_count += 1
+                if not element.isdigit():
+                    raise ValidationError(
+                        _("Only digits are allowed in phone number field")
+                    )
+            if test_count > 10:
+                raise ValidationError(
+                    _("More than 10 digits are not allowed in phone number field")
+                )
+            elif test_count < 10:
+                raise ValidationError(
+                    _("Enter atleast 10 digits in phone number field")
+                )
 
     @api.model
     def create(self, vals):
@@ -158,6 +171,7 @@ class JobApplicant(models.Model):
 
     @api.depends("position_ids")
     def _compute_stage(self):
+        """This method is a change a state #T00472"""
         for applicant in self:
             if applicant.position_ids:
                 if not applicant.stage_id:

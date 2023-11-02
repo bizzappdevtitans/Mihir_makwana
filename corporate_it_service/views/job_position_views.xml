@@ -45,9 +45,12 @@
                                         <group>
                                         <field name="recruiter_id" />
                                         <field name="recruitment" />
-                                        <field name="date_of_open" />
-                                        <field name="date_of_closing" />
-                                        <field name="salary_proposed" />
+                                        <field name="date_of_open" widget="date" />
+                                        <field name="date_of_closing" widget="date" />
+                                        <field
+                                name="salary_proposed"
+                                widget="integer"
+                            />
                                         </group>
                                     </group>
                                         <group>
@@ -57,7 +60,7 @@
                         </form>
                 </field>
         </record>
-
+    <!-- search view  -->
     <record id="position_search_view_for_corporate_it_services" model="ir.ui.view">
         <field name="name">position_search_view</field>
         <field name="model">job.position</field>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+    <!-- for a applicant id sequence generate #T00472 -->
     <record id="seq_appointment" model="ir.sequence">
         <field name="name">Application Sequence</field>
         <field name="code">it.applicant</field>

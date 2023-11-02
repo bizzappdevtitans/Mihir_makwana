@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <odoo noupdate="1">
+    <!-- for a email send to applicant #T00472 -->
     <record forcecreate="True" id="ir_cron_test_school_management" model="ir.cron">
         <field name="name">SENT EMAIL</field>
         <field name="user_id" ref="base.user_root" />
