@@ -37,7 +37,7 @@ class PositionCreateWizard(models.TransientModel):
     _name = "position.wizard"
     _description = "position wizard"
 
-    name = fields.Char(string="Position Name")
+    name = fields.Char(string="Position Name", required=True, default="Sales Manager")
     description_of_position = fields.Text("Description")
 
     def action_confirm(self):

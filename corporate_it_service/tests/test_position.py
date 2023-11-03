@@ -10,6 +10,7 @@ class TestApplicantPosition(TransactionCase):
         #  self.TestApplicantPosition = self.env["job.position"]
 
     def test_01_create_job_position(self):
+        """This method is use to create job position #T00472"""
         position = self.env["job.position"].create(
             {
                 "name": "Sales Manager",
@@ -30,6 +31,7 @@ class TestApplicantPosition(TransactionCase):
         )
 
     def test_02_check_invalid_salary_proposed(self):
+        """This method is use to check invalid salary proposed #T00472"""
         with self.assertRaises(ValidationError):
             salary = self.env["job.position"].create(
                 {
@@ -46,7 +48,9 @@ class TestApplicantPosition(TransactionCase):
             )
             salary.update({"salary_proposed": -12000000})
 
-    def test_03_check_invalid_recruitment_proposed(self):
+    def test_03_check_invalid_recruitment(self):
+        """This method is use to check invalid recruitment #T00472"""
+
         with self.assertRaises(ValidationError):
             salary = self.env["job.position"].create(
                 {
@@ -66,6 +70,8 @@ class TestApplicantPosition(TransactionCase):
             )
 
     def test_04_check_dates_validation(self):
+        """This method is use to check dates validation #T00472"""
+
         with self.assertRaises(ValidationError):
             dates = self.env["job.position"].create(
                 {
@@ -92,8 +98,10 @@ class TestApplicantPosition(TransactionCase):
                 "recruitment": 1,
                 "date_of_open": "2023-12-01",
                 "date_of_closing": "2023-12-01",
+                "description": "This position for a Sales Manager",
             }
         )
         self.assertFalse(position.company_id, "compony id should be a False")
         self.assertFalse(position.department_id, "department id should be a False")
         self.assertFalse(position.recruiter_id, "recruiter should be a False")
+        self.assertTrue(position.description, "Description should be In position")

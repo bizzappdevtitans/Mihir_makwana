@@ -12,7 +12,7 @@ class JobPositions(models.Model):
     _inherit = ["mail.thread", "mail.activity.mixin"]
     # fields for a #T00472
     name = fields.Char(string="Position Name", required=True)
-    description = fields.Text(string="Descriptions")
+    description = fields.Text(string="Descriptions", required=True)
     company_id = fields.Many2one(comodel_name="res.partner", string="Company")
     department_id = fields.Many2one(comodel_name="hr.department", string="Department")
     recruiter_id = fields.Many2one(comodel_name="res.users", string="Recruiter")

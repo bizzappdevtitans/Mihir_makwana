@@ -9,6 +9,8 @@ class TestApplicantStages(TransactionCase):
         # self.ApplicantStages = self.env["applicant.stages"]
 
     def test_01_check_create_applicant_stages(self):
+        """This method is check a applicant stages#T00472"""
+
         stage = self.env["applicant.stages"].create(
             {
                 "name": "Recived",
@@ -38,6 +40,8 @@ class TestApplicantStages(TransactionCase):
         )
 
     def test_02_check_sequence_for_stages(self):
+        """This method is check sequence for stages #T00472"""
+
         stage1 = self.env["applicant.stages"].create(
             {"name": "Application Recived", "sequence": 10}
         )
