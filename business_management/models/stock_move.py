@@ -4,8 +4,8 @@ from odoo import fields, models
 class StockMove(models.Model):
     _inherit = "stock.move"
 
-    _delivery_description = fields.Text(string="Delivery Description")
-    _purchase_description = fields.Text(string="Purchase Description")
+    delivery_description = fields.Char()
+    purchase_description = fields.Char()
 
     def _get_new_picking_values(self):
         """This method use to pass value from sale order to delivery #T000394"""

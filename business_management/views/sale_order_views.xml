@@ -10,7 +10,6 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='partner_id']" position="after">
                     <field name="invoice_description" />
-                    <field name="customer_number" />
                     <field name="manufacturing_order_description" />
                 </xpath>
                 <xpath expr="//field[@name='payment_term_id']" position="before">

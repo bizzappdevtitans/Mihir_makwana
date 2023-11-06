@@ -1,6 +1,6 @@
 from . import sale_order
 from . import account_move
-from . import SaleAdvancePaymentInv
+from . import sale_advance_payment_inv
 from . import stock_picking
 from . import stock_move
 from . import purchase_order

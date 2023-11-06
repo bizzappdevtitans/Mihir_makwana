@@ -6,4 +6,4 @@ from odoo import fields, models
 class MrpProduction(models.Model):
     _inherit = ["mrp.production"]
     # fields for #T00409
-    manufacturing_order_description = fields.Text(string="Manufacturing Description")
+    manufacturing_order_description = fields.Char(string="Manufacturing Description")

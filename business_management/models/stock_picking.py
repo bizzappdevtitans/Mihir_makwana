@@ -5,4 +5,4 @@ class StockPicking(models.Model):
     _inherit = "stock.picking"
 
     # fields for #T00394
-    delivery_description = fields.Text()
+    delivery_description = fields.Char()
