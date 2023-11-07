@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--  Inherited project.task model view to display added fields in sale
+    project task form view #T00412 -->
+    <record id="view_sale_project_inherit_form" model="ir.ui.view">
+        <field name="name">project.task.view.inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='parent_id']" position="after">
+                <field name="task_description" />
+            </xpath>
+        </field>
+        </record>
+</odoo>
