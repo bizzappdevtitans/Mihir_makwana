@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+        <!-- this menu for a student  -->
+        <menuitem id="student_menu" name="SUNSHINE SCHOOL" />
+        <!-- this menu for a student Registration -->
+        <menuitem
+        id="student_menu_views"
+        name="students Registration"
+        parent="student_menu"
+        action="action_student"
+    />
+        <!-- this menu for a teacher Registration -->
+        <menuitem
+        id="students_teacher_views"
+        name="teacher"
+        parent="student_menu"
+        action="action_teacher"
+    />
+        <!-- this menu for a student sport Registration -->
+        <menuitem
+        id="students_sport_views"
+        name="sport activity"
+        parent="student_menu"
+        action="action_sport"
+    />
+        <!-- this menu for a student Mark -->
+        <menuitem
+        id="students_marks_views"
+        name="marks"
+        parent="student_menu"
+        action="action_student_mark"
+    />
+        <!-- this menu for a setting in module -->
+        <menuitem
+        id="action_school_config_settings_view"
+        name="Configuration"
+        parent="student_menu"
+        action="action_school_config_settings"
+    />
+</odoo>

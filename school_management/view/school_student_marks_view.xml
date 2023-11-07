@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- tree view  -->
+    <record id="marks_tree_view" model="ir.ui.view">
+        <field name="name">Marks_Tree_View</field>
+        <field name="model">students.mark</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- fields for a tree view  -->
+                <field name="student_enroll" />
+                <field name="std" />
+                <field name="exam_1" />
+                <field name="exam_2" />
+                <field name="extra" />
+                <field name="average" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- form view -->
+    <record id="marks_form_view" model="ir.ui.view">
+        <field name="name">Marks _Form_View</field>
+        <field name="model">students.mark</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="student_enroll" />
+                            <field name="std" />
+                        </group>
+                        <group>
+                            <!-- fiels for a form view -->
+                            <field name="exam_1" />
+                            <field name="exam_2" />
+                            <field name="extra" />
+                            <field name="average" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- action -->
+    <record id="action_student_mark" model="ir.actions.act_window">
+        <field name="name">Student mark</field>
+        <field name="res_model">students.mark</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- tree view  -->
+    <record id="school_management_school_student_tree_view_report" model="ir.ui.view">
+        <field name="name"> Student_details_tree</field>
+        <field name="model">student.name</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="age &lt;= 20" decoration-danger="age &gt; 20">
+                <header>
+                   <button
+                        name="unlink_orm"
+                        class="btn-primary"
+                        string="unlink"
+                        type="object"
+                    />
+                </header>
+                <field name="name" />
+                <field name="roll" />
+                <field name="age" />
+                <field name="phone" widget="phone" />
+                <field name="course" widget="badge" />
+                <field name="std" />
+                <field name="gender" widget="badge" />
+                <field name="email" widget="email" />
+                <field name="date_of_birth" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+    <!-- form view -->
+    <record id="school_management_school_student_form_view_report" model="ir.ui.view">
+        <field name="name">student_details_form</field>
+        <field name="model">student.name</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                     <button
+                        name="%(school_management.test_model_wizard_action_student)d"
+                        string="Sport Registration"
+                        type="action"
+                        class="oe_highlight"
+                    />
+                    <field name="state" widget="statusbar" />
+                    <field name="progress" widget="progressbar" />
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            name="compute_student_result_button"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-files-o"
+                        >
+                            <field
+                                string="Result"
+                                name="student_result"
+                                widget="statinfo"
+                            />
+                        </button>
+                    </div>
+
+                    <group>
+                        <group>
+                            <!-- fields for a form view -->
+                            <widget
+                                name="web_ribbon"
+                                text="Registration"
+                                bg_color="bg-primary"
+                            />
+                            <field
+                                name="name"
+                                style="font-size:20px;color:black;font-style:Bold"
+                            />
+                            <field name="roll" style="font-size:15px;color:black;" />
+                            <field name="std" widget="Selection" />
+                            <field name="gender" widget="selection" />
+                            <field
+                                name="phone"
+                                onchange="validate_phone(phone)"
+                                widget="phone"
+                            />
+                            <field name="email" widget="email" />
+                            <field name="percentage" widget="percentage" />
+                            <field name="priority" widget="priority" />
+                        </group>
+                        <group>
+                            <field
+                                name="student_image"
+                                widget="image"
+                                class="oe_avatar"
+                            />
+                            <field name="reference_no" />
+                            <field name="date_of_birth" />
+                            <field name="age" />
+                            <!-- <field name="dat_time"/> -->
+                            <field name="course" />
+                            <field name="permenent_adress" />
+                            <field name="teachers_name" />
+                            <field name="record" />
+                            <field name="currency_id" invisible="1" />
+                            <field name="student_fees" widget="monetary" />
+                            <field name="student_sport" />
+                            <field name="admission_date" />
+                            <field name="admission_confirm_date" />
+                        </group>
+                  </group>
+                  <notebook>
+                    <page string="stdents">
+                        <group>
+                            <field name="school_contact" />
+                        </group>
+                        <group>
+                            <field name="student_sport" />
+                            <field name="events" />
+                        </group>
+                    </page>
+                    <page string="other">
+                        <group>
+                            <field name="school_name" />
+                            <field
+                                    name="visit_web"
+                                    widget="url"
+                                    readonly="1"
+                                    text="https://www.icbse.com/schools/sunshine-international-school-gy4k83"
+                                />
+                        </group>
+                    </page>
+                  </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- search view -->
+    <record id="school_management_school_student_search_view" model="ir.ui.view">
+        <field name="name">students_detail_search</field>
+        <field name="model">student.name</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="roll" />
+                <field name="course" />
+                <field name="gender" />
+                <field name="age" />
+                <field name="phone" />
+                <field name="email" />
+                <field name="permenent_adress" />
+                <field name="student_image" />
+                <!-- This fields are searching fields for #T00454 -->
+                <filter
+                    name="gender"
+                    string="MALE STUDENT"
+                    domain="[('gender','=','male')]"
+                    help="Male Student Registration"
+                />
+                <filter
+                    name="gender"
+                    string="FEMALE STUDENT"
+                    domain="[('gender','=','female')]"
+                    help="Female Student Registration"
+                />
+                <filter
+                    name="course"
+                    string="NCERT COURSE "
+                    domain="[('course','=','ncert')]"
+                    help="NCERT COURSE STUDENT "
+                />
+                <filter
+                    name="course"
+                    string="GSEB COURSE "
+                    domain="[('course','=','gseb')]"
+                    help="GSEB COURSE STUDENT "
+                />
+            </search>
+        </field>
+    </record>
+    <!-- action -->
+    <record id="action_student" model="ir.actions.act_window">
+        <field name="name">Student Record</field>
+        <field name="res_model">student.name</field>
+        <field name="view_mode">tree,form,search</field>
+    </record>
+
+</odoo>
