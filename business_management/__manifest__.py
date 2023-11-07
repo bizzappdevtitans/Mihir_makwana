@@ -4,7 +4,7 @@
     "category": "Sales/Sales",
     "author": "Bizzappdev",
     "summary": "Bussiness Management for All Bussiness",
-    "website": "https://github.com/OCA/product-variant",
+    "website": "https://www.bizzappdev.com",
     "depends": [
         "mrp",
         "sale_project",
