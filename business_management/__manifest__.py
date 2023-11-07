@@ -1,7 +1,7 @@
 {
     "name": "Bussiness  Management",
     "version": "15.0.0.0.1",
-    "category": "Bussiness management",
+    "category": "Sales/Sales",
     "author": "Bizzappdev",
     "summary": "Bussiness Management for All Bussiness",
     "website": "https://github.com/OCA/product-variant",
