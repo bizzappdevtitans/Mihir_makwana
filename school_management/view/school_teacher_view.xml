@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!-- tree view -->
+    <record id="school_management_school_teacher_tree_view" model="ir.ui.view">
+        <field name="name"> School_teacher_tree_view</field>
+        <field name="model">school.teacher</field>
+        <field name="arch" type="xml">
+            <tree
+                decoration-success="degree == 'PHD'"
+                decoration-danger="degree == 'M.TECH'"
+            >
+                <field name="teacher_name" />
+                <field name="gender" />
+                <field name="teacher_dob" />
+                <field name="teacher_number" />
+                <field name="degree" widget="badge" />
+                <field name="teacher_subject" />
+                <field name="teacher_experience" />
+            </tree>
+        </field>
+    </record>
+    <!-- form view -->
+    <record id="school_management_school_teacher_form_view" model="ir.ui.view">
+        <field name="name">teacher_details_form</field>
+        <field name="model">school.teacher</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <widget
+                            name="web_ribbon"
+                            text="Teacher Registration"
+                            bg_color="bg-primary"
+                        />
+                        <field name="image" widget="image" class="oe_avatar" />
+                        <field name="teacher_name" />
+                        <field name="gender" />
+                        <field name="teacher_dob" />
+                        <field name="age" />
+                        <field name="teacher_number" />
+                        <field name="degree" />
+                        <field name="teacher_subject" />
+                        <field name="teacher_experience" />
+                        <field name="class_teacher" />
+                    </group>
+                    <notebook>
+                    <page string="Attechment">
+                        <group>
+                            <field name="document_upload" />
+                        </group>
+                    </page>
+                    <page string="other ">
+                        <group>
+                            <field name="skills" />
+                        </group>
+                    </page>
+
+                  </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_teacher" model="ir.actions.act_window">
+        <field name="name">teacher registration</field>
+        <field name="res_model">school.teacher</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

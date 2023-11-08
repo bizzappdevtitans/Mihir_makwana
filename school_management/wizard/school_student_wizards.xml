@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+
+    <!-- wizad form view -->
+    <record id="student_wizard_view_form" model="ir.ui.view">
+        <field name="name">student.wizard.form</field>
+        <field name="model">student.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Test">
+                <group class="oe_title">
+                    <!-- fields for a wizards  -->
+                    <field name="name" />
+                    <field name="roll" />
+                    <field name="dob" />
+                    <field name="age" />
+                </group>
+                <footer>
+                    <button
+                        name="action_done"
+                        string="SUBMIT"
+                        class="btn-primary"
+                        type="object"
+                    />
+                  <button string="CANCEL" class="btn-secondary" special="cancel" />
+               </footer>
+            </form>
+        </field>
+    </record>
+    <!-- wizard action -->
+    <record id="test_model_wizard_action" model="ir.actions.act_window">
+        <field name="name">NEW STUDENT REGISTRATION </field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">student.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="student_wizard_view_form" />
+        <field name="target">new</field>
+    </record>
+
+
+    <!-- student object wizard  -->
+    <record id="student_wizard_view_form_student" model="ir.ui.view">
+        <field name="name">student.wizard.form</field>
+        <field name="model">sport.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Test">
+                <group class="oe_title">
+                    <!-- fields for a wizards -->
+                    <field name="name" />
+                    <field name="sports_roll" />
+                    <field name="phone" />
+                    <field name="Email" />
+                </group>
+                <footer>
+                    <button
+                        name="action_done_sport"
+                        string="SUBMIT"
+                        class="btn-primary"
+                        type="object"
+                    />
+                  <button string="CANCEL" class="btn-secondary" special="cancel" />
+               </footer>
+            </form>
+        </field>
+    </record>
+    <record id="test_model_wizard_action_student" model="ir.actions.act_window">
+        <field name="name">NEW SPORT REGISTRATION </field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sport.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="student_wizard_view_form_student" />
+        <field name="target">new</field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_student_name,access_student_name,model_student_name,base.group_user,1,1,1,1
+access_school_teacher,access_school_teacher,model_school_teacher,base.group_user,1,1,1,1
+access_student_sport,access_student_sport,model_student_sport,base.group_user,1,1,1,1
+access_students_mark,access_students_mark,model_students_mark,base.group_user,1,1,1,1
+access_student_wizard,access_student_wizard,model_student_wizard,base.group_user,1,1,1,1
+access_sport_wizard,access_sport_wizard,model_sport_wizard,base.group_user,1,1,1,1

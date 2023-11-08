@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+
+     <!-- tree view -->
+    <record id="school_management_student_sport_tree_view" model="ir.ui.view">
+        <field name="name"> student_sport_tree_view</field>
+        <field name="model">student.sport</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="sport" decoration-info="name">
+                <field name="sport" widget="badge" />
+                <field name="name" />
+                <field name="phone" widget="phone" />
+                <field name="email" widget="email" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- form view -->
+    <record id="school_management_student_sport_form_view" model="ir.ui.view">
+        <field name="name">student_sport_view</field>
+        <field name="model">student.sport</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        name="%(school_management.test_model_wizard_action)d"
+                        string="New Student Registration"
+                        type="action"
+                        class="oe_highlight"
+                    />
+                    <field name="state" widget="statusbar" />
+                    <field name="progress" widget="progressbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <widget
+                            name="web_ribbon"
+                            text="sport Registration"
+                            bg_color="bg-success"
+                        />
+                        <group>
+                            <field name="name" />
+                            <field name="sport_std" />
+                            <field name="sport" />
+                            <field name="phone" widget="phone" />
+                            <field name="email" widget="email" />
+                        </group>
+                    </group>
+                       <notebook>
+                    <page string="student">
+                        <group>
+                            <field name="student_ids" widget="many2manyattendee" />
+                        </group>
+                    </page>
+                    <page string="your achivements">
+                        <group>
+                        <field
+                                    name="achivement_photo"
+                                    widget="image"
+                                    class="oe_avatar"
+                                />
+                        </group>
+                    </page>
+                  </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- action for the sport -->
+    <record id="action_sport" model="ir.actions.act_window">
+        <field name="name">sports</field>
+        <field name="res_model">student.sport</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>
