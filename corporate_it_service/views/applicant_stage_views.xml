@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- tree view  -->
+    <record id="applicant_stage_tree_view_for_corporate_it_services" model="ir.ui.view">
+        <field name="name">applicant_stage_tree_view</field>
+        <field name="model">applicant.stages</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- Stage Kanban View -->
+    <record
+        id="applicant_stage_kanban_view_for_corporate_it_services"
+        model="ir.ui.view"
+    >
+        <field name="name">applicant_stage_kanban_view</field>
+        <field name="model">applicant.stages</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <strong>
+                                <field name="name" />
+                            </strong>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <!-- form view  -->
+    <record
+        id="applicant_stages_form_view_for_corporate_it_services"
+        model="ir.ui.view"
+    >
+        <field name="name">applicant_stages_form_view</field>
+        <field name="model">applicant.stages</field>
+        <field name="arch" type="xml">
+            <form string="Stage">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="sequence" />
+                            <field
+                            name="template_id"
+                            domain="[('model_id.model', '=', 'it.applicants')]"
+                        />
+                        </group>
+                        <group>
+                            <p class="text-muted" colspan="2">
+                                You can define here the labels that will be displayed for the kanban state instead
+                                of the default labels.
+                            </p>
+                            <label for="normal" string=" " class="o_status" />
+                            <field name="normal" nolabel="1" />
+                            <label
+                            for="blocked"
+                            string=" "
+                            class="o_status o_status_red"
+                        />
+                            <field name="blocked" nolabel="1" />
+                            <label
+                            for="done"
+                            string=" "
+                            class="o_status o_status_green"
+                        />
+                            <field name="done" nolabel="1" />
+                        </group>
+                        <separator string="Requirements" />
+                        <field name="requirement" />
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+    <!-- search view  -->
+    <record
+        id="applicant_stages_search_view_for_corporate_it_services"
+        model="ir.ui.view"
+    >
+        <field name="name">applicant_stages_search_view</field>
+        <field name="model">applicant.stages</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="sequence" />
+            </search>
+        </field>
+    </record>
+
+    <!-- action  -->
+    <record id="action_applicant_stages" model="ir.actions.act_window">
+        <field name="name">applicant stages</field>
+        <field name="res_model">applicant.stages</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field
+            name="view_id"
+            ref="applicant_stage_tree_view_for_corporate_it_services"
+        />
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new stage in the recruitment process
+            </p>
+            <p>
+                Don't forget to specify the department if your recruitment process
+                is different according to the job position.
+            </p>
+        </field>
+
+    </record>
+
+</odoo>

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- tree view  -->
+    <record id="applicant_tree_view_for_corporate_it_services" model="ir.ui.view">
+        <field name="name"> applicant_tree_view</field>
+        <field name="model">it.applicant</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="is_active" />
+                <field name="state_kanban" widget="state_selection" readonly="1" />
+                <field name="applicant_id" />
+                <field name="applicant_email" />
+                <field name="position_ids" />
+                <field name="priority_selection" widget="priority" optional="show" />
+                <field name="applicant_degree" />
+                <field name="applicant_date" />
+                <field name="salary_expect" />
+                <field name="platform_via" />
+                <field name="mobile" widget="phone" />
+                <field name="availability" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+
+
+    <!-- form view  -->
+    <record id="applicant_form_view_for_corporate_it_services" model="ir.ui.view">
+        <field name="name">applicant_form_view</field>
+        <field name="model">it.applicant</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        id="button_potential"
+                        name="action_status_potential"
+                        string="Potential"
+                        class="btn-success"
+                        type="object"
+                    />
+                    <button
+                        id="button_refuse"
+                        name="action_status_blocked"
+                        string="Blocked"
+                        class="btn-danger"
+                        type="object"
+                    />
+                    <button
+                        id="share_in_whatsapp"
+                        name="action_share_in_whatsapp"
+                        string="Share In Whatsapp"
+                        class="oe_highlight"
+                        type="object"
+                        icon="fa-whatsapp"
+                    />
+                    <button
+                        id="action_sent_email"
+                        name="action_send_email"
+                        string="Send Email"
+                        class="oe_highlight"
+                        type="object"
+                        icon="fa-duotone fa-envelope"
+                    />
+                    <button
+                        id="button_cancle"
+                        name="action_cancle"
+                        string="Cancel"
+                        class="btn-primary"
+                        type="object"
+                    />
+                        <button
+                        id="create_position"
+                        name="action_create_position"
+                        string="Create Position"
+                        class="btn-primary"
+                        type="object"
+                    />
+                    <!-- Show all stages in statusbar -->
+                    <field
+                        name="stage_id"
+                        widget="statusbar"
+                        options="{'clickable': '1'}"
+                        attrs="{'invisible': [('is_active', '=', False)]}"
+                    />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                        <field name="state_kanban" widget="state_selection" />
+                        <field name="name" />
+                        <field name="active_applicant" invisible="1" />
+                        <field name="is_active" />
+                        <field name="applicant_id" />
+                        <field name="applicant_email" widget="email" />
+                        <field name="mobile" widget="phone" />
+                        <field name="applicant_date" widget="date" />
+                        <field name="position_ids" />
+                        <field name="company_id" />
+                        <field
+                                name="priority_selection"
+                                widget="priority"
+                                optional="show"
+                            />
+                        </group>
+                        <group>
+                        <field name="image" widget="image" class="oe_avatar" />
+                        <field name="applicant_degree" />
+                        <field name="salary_expect" widget="integer" />
+                        <field name="platform_via" />
+                        <field name="attachment_cv" />
+                        <field name="availability" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" />
+                    <field name="activity_ids" />
+                    <field name="message_ids" options="{'open_attachments': True}" />
+                </div>
+            </form>
+        </field>
+    </record>
+    <!-- Applicants kanban view -->
+    <record id="applicant_kanban_view_for_corporate_it_services" model="ir.ui.view">
+        <field name="name">applicant.kanaban.view.for.corporate.it.services</field>
+        <field name="model">it.applicant</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field
+                    name="stage_id"
+                    options='{"group_by_tooltip": {"requirements": "Requirements"}}'
+                />
+                <field name="name" />
+                <field name="is_active" />
+                <field name="state_kanban" widget="state_selection" readonly="1" />
+                <field name="applicant_id" />
+                <field name="applicant_email" />
+                <field name="position_ids" />
+                <field name="priority_selection" widget="priority" optional="show" />
+                <field name="applicant_degree" />
+                <field name="applicant_date" />
+                <field name="salary_expect" />
+                <field name="platform_via" />
+                <field name="mobile" />
+                <field name="availability" optional="hide" />
+                <progressbar
+                    field="activity_state"
+                    colors='{"planned": "success", "overdue": "danger", "today": "warning"}'
+                />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div
+                            t-attf-class="{{!selection_mode ? 'oe_kanban_color_' + kanban_getcolor(record.color) : ''}} oe_kanban_card oe_kanban_global_click oe_applicant_kanban oe_semantic_html_override"
+                        >
+                            <span
+                                class="badge badge-pill badge-danger pull-right mr-4"
+                            >Refused Application
+                            </span>
+                            <div>
+
+                                <div class="dropdown-menu" role="menu">
+                                    <t t-if="widget.editable">
+                                        <a
+                                            role="menuitem"
+                                            type="edit"
+                                            class="dropdown-item"
+                                        >Edit</a>
+                                    </t>
+
+                                </div>
+                            </div>
+                            <div class="oe_kanban_content">
+                                <div class="o_kanban_record_top">
+                                    <div class="o_kanban_record_headings">
+                                        <div class="o_kanban_record_title">
+                                            <t t-esc="record.name.value" />
+                                        </div>
+                                        <br />
+                                        <b
+                                            class="o_kanban_record_title mt8"
+                                            t-if="record.applicant_id"
+                                        >
+                                            <field name="applicant_id" />
+                                            <br />
+                                        </b>
+
+                                    </div>
+                                </div>
+
+                                <div class="o_kanban_record_bottom mt4">
+                                    <div class="oe_kanban_bottom_left">
+                                        <div
+                                            class="float-left mr4"
+                                            groups="base.group_user"
+                                        >
+                                            <field
+                                                name="priority_selection"
+                                                widget="priority_selection"
+                                            />
+                                        </div>
+                                        <div class="o_kanban_inline_block mr8">
+                                            <field
+                                                name="active_applicant"
+                                                widget="kanban_activity"
+                                            />
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="o_kanban_record_subtitle">
+                                    <field name="stage_id" />
+                                </div>
+                            </div>
+                            <div class="oe_clear" />
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+
+
+
+
+
+    <!-- pivot view  -->
+    <record id="applicant_pivot_view_for_corporate_it_services" model="ir.ui.view">
+        <field name="name">applicant.pivot.view.for.corporate.it.services</field>
+        <field name="model">it.applicant</field>
+        <field name="arch" type="xml">
+            <pivot string="Job Applications" sample="1">
+                <field name="name" type="row" />
+                <field name="applicant_id" type="col" />
+                <field name="mobile" invisible="1" />
+            </pivot>
+        </field>
+    </record>
+    <!-- search view  -->
+    <record id="applicant_search_view_for_corporate_it_services" model="ir.ui.view">
+        <field name="name">applicant_search_view</field>
+        <field name="model">it.applicant</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="is_active" />
+                <field name="applicant_id" />
+                <field name="applicant_email" />
+                <field name="applicant_degree" />
+                <field name="position_ids" />
+                <field name="applicant_date" />
+                <field name="salary_expect" />
+                <field name="platform_via" />
+                <field name="mobile" />
+                <!-- This fields are searching fields for #T00454 -->
+                <filter
+                    name="is_active"
+                    string="ACTIVE"
+                    domain="[('is_active','=','True')]"
+                    help="Only active applicant is shown "
+                />
+                <filter
+                    string="position"
+                    name="position_ids"
+                    context="{'group_by':'position_ids'}"
+                    help="Group by Position"
+                />
+                <filter
+                    string="state"
+                    name="state_kanban"
+                    context="{'group_by':'state_kanban'}"
+                    help="Group by state "
+                />
+                <filter
+                    string="Priority"
+                    name="priority_selection"
+                    context="{'group_by':'priority_selection'}"
+                    help="Group by Priority  "
+                />
+            </search>
+        </field>
+    </record>
+
+
+
+
+    <!-- action -->
+    <record id="action_applicant" model="ir.actions.act_window">
+        <field name="name">applicant Form</field>
+        <field name="res_model">it.applicant</field>
+        <field name="view_mode">tree,kanban,form,pivot</field>
+    </record>
+</odoo>

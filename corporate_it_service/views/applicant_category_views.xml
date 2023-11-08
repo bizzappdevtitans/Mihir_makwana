@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- tree view  -->
+    <record
+        id="applicant_category_tree_view_for_corporate_it_services"
+        model="ir.ui.view"
+    >
+        <field name="name"> applicant_category_tree_view</field>
+        <field name="model">applicant.category</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="color_of_tag" />
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- form view  -->
+
+    <record
+        id="applicant_category_form_view_for_corporate_it_services"
+        model="ir.ui.view"
+    >
+        <field name="name">applicant_category_form_view</field>
+        <field name="model">applicant.category</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                        <field name="name" />
+                        <field name="color_of_tag" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- search view  -->
+
+    <record
+        id="applicant_category_search_view_for_corporate_it_services"
+        model="ir.ui.view"
+    >
+        <field name="name">applicant_category_search_view</field>
+        <field name="model">applicant.category</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="color_of_tag" />
+            </search>
+        </field>
+    </record>
+
+
+
+    <!-- action  -->
+
+    <record id="action_applicant_category" model="ir.actions.act_window">
+        <field name="name">applicant category</field>
+        <field name="res_model">applicant.category</field>
+        <field name="view_mode">tree,form</field>
+        <field
+            name="view_id"
+            ref="applicant_category_tree_view_for_corporate_it_services"
+        />
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new tag
+            </p>
+        </field>
+    </record>
+
+</odoo>

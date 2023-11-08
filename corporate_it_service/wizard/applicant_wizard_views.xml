@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- form view -->
+    <record id="applicant_wizard_form_view" model="ir.ui.view">
+        <field name="name">applicant.wizard.form.view</field>
+        <field name="model">applicant.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Wizard Form View">
+                <group>
+                    <field name="applicant_id" />
+                    <field name="applicant_email" widget="email" />
+                    <field name="is_active" />
+                </group>
+                <footer>
+                    <button name="action_cancle_record" string="Submit" type="object" />
+                    <button string="Cancel" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- action -->
+    <record id="action_applicant_wizard_form_view" model="ir.actions.act_window">
+        <field name="name">Delete Applicant Record</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">applicant.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="applicant_wizard_form_view" />
+        <field name="target">new</field>
+    </record>
+
+
+    <!-- form view -->
+    <record id="position_wizard_form_view" model="ir.ui.view">
+        <field name="name">position.wizard.form.view</field>
+        <field name="model">position.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Wizard Form View">
+                <group>
+                    <field name="name" />
+                    <field name="description_of_position" />
+                </group>
+                <footer>
+                    <button name="action_confirm" string="Submit" type="object" />
+                    <button string="Cancel" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <!-- action -->
+    <record id="action_position_wizard_form_view" model="ir.actions.act_window">
+        <field name="name">Create Applicant Position</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">position.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="position_wizard_form_view" />
+        <field name="target">new</field>
+    </record>
+
+</odoo>
