@@ -100,7 +100,6 @@ class SchoolManagement(models.Model):
             ("cancel", "Cancelled"),
             ("done", "Done"),
         ],
-        string="Status",
         required=True,
         default="draft",
     )
@@ -287,3 +286,13 @@ class SchoolManagement(models.Model):
             record.student_result = self.env["students.mark"].search_count(
                 [("student_enroll", "=", self.name)]
             )
+
+    def mark_as_done(self):
+        """This method is change the state #T00339"""
+        for record in self:
+            record.state = "done"
+
+    def mark_as_cancle(self):
+        """This method is change the state #T00339"""
+        for record in self:
+            record.state = "cancel"

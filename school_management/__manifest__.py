@@ -9,7 +9,7 @@
     "data": [
         "security/ir.model.access.csv",
         "security/school_managemment_security.xml",
-        "data/ir_sequence_data.xml",
+        "data/student_server_action.xml",
         "data/ir_cron_data.xml",
         "wizard/school_student_wizards.xml",
         "view/school_student_view.xml",
