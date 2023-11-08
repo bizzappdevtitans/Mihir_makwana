@@ -8,7 +8,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='vat']" position="before">
                 <field
-                    name="delivery_adress"
+                    name="is_delivery_address"
                     attrs="{'invisible':[('type', '!=', 'delivery')]}"
                 />
             </xpath>

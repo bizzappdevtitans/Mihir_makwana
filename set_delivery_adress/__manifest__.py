@@ -3,7 +3,7 @@
 {
     "name": "Set Delivery Address",
     "version": "15.0.0.0.1",
-    "category": "Address management",
+    "category": "sales/sales",
     "summary": "Address management",
     "author": "BizzAppDev",
     "website": "https://www.bizzappdev.com",
@@ -12,6 +12,5 @@
         "views/res_partner_views.xml",
     ],
     "installable": True,
-    "application": True,
     "license": "Other proprietary",
 }
