@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="split_sale_order_wizard" model="ir.ui.view">
+        <field name="name">split.sale.order.wizard</field>
+        <field name="model">spli.sale.order.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="is_split_sale_order_based_on_category" />
+                <footer>
+                    <button
+                        name="action_confirm_so_order"
+                        string="SPLIT"
+                        class="btn-primary"
+                        type="object"
+                    />
+                  <button string="CANCEL" class="btn-secondary" special="cancel" />
+               </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_split_so_wizard" model="ir.actions.act_window">
+        <field name="name">SPLIT SALE ORDER </field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">spli.sale.order.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+
+</odoo>
