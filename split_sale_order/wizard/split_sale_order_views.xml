@@ -3,13 +3,18 @@
 
     <record id="split_sale_order_wizard" model="ir.ui.view">
         <field name="name">split.sale.order.wizard</field>
-        <field name="model">spli.sale.order.wizard</field>
+        <field name="model">split.sale.order.wizard</field>
         <field name="arch" type="xml">
             <form>
-                <field name="is_split_sale_order_based_on_category" />
+                <sheet>
+                    <group>
+                        <field name="sale_order_id" />
+                        <field name="is_split_sale_order_based_on_category" />
+                    </group>
+                </sheet>
                 <footer>
                     <button
-                        name="action_confirm_so_order"
+                        name="action_confirm_split_sale_order"
                         string="SPLIT"
                         class="btn-primary"
                         type="object"
@@ -22,7 +27,7 @@
     <record id="action_split_so_wizard" model="ir.actions.act_window">
         <field name="name">SPLIT SALE ORDER </field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">spli.sale.order.wizard</field>
+        <field name="res_model">split.sale.order.wizard</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
     </record>
