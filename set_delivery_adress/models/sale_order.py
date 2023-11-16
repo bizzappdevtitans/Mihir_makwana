@@ -1,7 +1,6 @@
 from odoo import api, models
 
 
-# inherit sale.order object # T00458
 class SaleOrder(models.Model):
     _inherit = ["sale.order"]
 
@@ -12,7 +11,7 @@ class SaleOrder(models.Model):
             # if we select a company  while filter that record who has
             # company_type is individule # T00458
             individual_with_delivery_adress = self.partner_id.child_ids.filtered(
-                lambda a: a.delivery_adress and a.company_type == "individual"
+                lambda a: a.is_delivery_address and a.company_type == "individual"
             )
             if individual_with_delivery_adress:
                 # when  company has individule that time delivery address

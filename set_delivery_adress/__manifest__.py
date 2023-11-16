@@ -7,7 +7,7 @@
     "summary": "Address management",
     "author": "BizzAppDev",
     "website": "https://www.bizzappdev.com",
-    "depends": ["base", "sale"],
+    "depends": ["sale"],
     "data": [
         "views/res_partner_views.xml",
     ],
