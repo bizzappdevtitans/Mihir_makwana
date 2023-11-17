@@ -14,5 +14,5 @@
         "views/sale_order_views.xml",
     ],
     "installable": True,
-    "license": "LGPL-3",
+    "license": "Other proprietary",
 }

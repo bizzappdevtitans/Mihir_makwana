@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
+    <!-- wizard for #T00483 -->
     <record id="split_sale_order_wizard" model="ir.ui.view">
         <field name="name">split.sale.order.wizard</field>
         <field name="model">split.sale.order.wizard</field>
@@ -24,6 +24,7 @@
             </form>
         </field>
     </record>
+    <!-- action for #T00483 -->
     <record id="action_split_so_wizard" model="ir.actions.act_window">
         <field name="name">SPLIT SALE ORDER </field>
         <field name="type">ir.actions.act_window</field>
