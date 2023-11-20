@@ -5,5 +5,5 @@ from odoo import fields, models
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    # fields for #T00483
+    # fields for #T0048
     sale_order_reference = fields.Char()

@@ -10,11 +10,16 @@
                     <group>
                         <field name="sale_order_id" />
                         <field name="is_split_sale_order_based_on_category" />
+                        <field name="options" />
+                        <field
+                            name="sale_order_line_ids"
+                            attrs="{'invisible' : [('options','!=','selected_lines')]}"
+                        />
                     </group>
                 </sheet>
                 <footer>
                     <button
-                        name="action_confirm_split_sale_order"
+                        name="action_split_done"
                         string="SPLIT"
                         class="btn-primary"
                         type="object"
