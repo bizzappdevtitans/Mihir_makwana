@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- wizard for #T00483 -->
+    <record id="purchase_order_from_product" model="ir.ui.view">
+        <field name="name">product.procurement.purchase.order</field>
+        <field name="model">product.procurement.purchase.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="scheduled_date" />
+                        <field name="partner_id" />
+                    </group>
+                </sheet>
+                <footer>
+                    <button
+                        name="product_to_purchase_order_wizard"
+                        string="CONFIRM"
+                        class="oe_highlight"
+                        type="object"
+                    />
+                  <button string="CANCEL" class="btn-secondary" special="cancel" />
+               </footer>
+            </form>
+        </field>
+    </record>
+    <!-- action for #T00483 -->
+    <record id="action_purchase_order_from_product" model="ir.actions.act_window">
+        <field name="name">Purchase Order From Product </field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.procurement.purchase.order</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+
+</odoo>
